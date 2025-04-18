@@ -99,6 +99,8 @@ const PaginationAndSearch = () => {
               marginLeft: "300px",
               outline: "none",
               border: "2px solid gray",
+              borderRadius:'8px',
+              padding:'5px'
             }}
           />
         </div>
@@ -186,7 +188,12 @@ const PaginationAndSearch = () => {
 
         {filteredData.length > itemsPerPage && (
           <div
-            style={{ display: "flex", justifyContent: "center", gap: "10px", marginTop:'12px' }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+              marginTop: "12px",
+            }}
           >
             {[...Array(totalPages)].map((_, index) => (
               <button
