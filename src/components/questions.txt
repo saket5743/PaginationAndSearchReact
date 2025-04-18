@@ -1,0 +1,387 @@
+JavaScript
+
+Q1. What are the different data types in JavaScript?
+Ans. There are mainly two types of data types : 
+primitive and non primitive. 
+In primitive there is (string, number, boolean, undefined, null, symbol) 
+and in non-primitive there is (Array, Object, Functions).
+
+Q2. Explain hoisting in JavaScript.
+Ans. Hoisting is JavaScript’s default behavior of moving declarations to the top of 
+the current scope (script or function) before the code is executed. Only declarations are hoisted, not initializations.
+
+Q3. What are closures in JavaScript?
+Ans. A closure is the combination of a function bundeled together(enclosed) with reference to its surrounding state.
+In other words closure gives access to an outer functions scope from an inner function.
+
+Q4. What is the scope of a variable in JavaScript?
+Ans. Types of Scope in JavaScript
+1. Global Scope : Declared outside any function or block.
+
+var globalVar = "I'm global";
+function greet() {
+  console.log(globalVar); // ✅ Accessible
+}
+
+2. Function Scope : Variables declared with var, let, or const inside a function are only accessible within that function.
+
+function sayHi() {
+  let message = "Hi!";
+  console.log(message);
+}
+console.log(message); // RefereceError
+
+3. Block Scope : Variables declared with let or const inside a block {} are only accessible within that block.var does not respect block scope!
+{
+  let a = 10;
+  const b = 20;
+  var c = 30;
+}
+
+console.log(a); // ❌ ReferenceError
+console.log(b); // ❌ ReferenceError
+console.log(c); // ✅ 30 → because var is function-scoped!
+
+4. Lexical Scope (Static Scope) : JavaScript uses lexical scoping, meaning that the scope of a variable is determined by its location in the source code.
+function outer() {
+  let name = "Outer";
+
+  function inner() {
+    console.log(name); // ✅ "Outer" – has access to outer's scope
+  }
+
+  inner();
+}
+
+Scope Type	            Declared With	           Accessible From
+Global	                var, let, const	           Anywhere
+Function	            var, let, const	           Inside the same function
+Block	                let, const	               Inside the same {} block
+Lexical	                (based on code location)   Inner functions can access outer scopes
+
+
+Q5. What is the difference between null and undefined?
+Ans. When the variable has no value then it shows undefined and when the variable is no any value then give it null.
+
+Q6. What are arrow functions, and how do they differ from regular functions?
+Ans. Arrow functions are a shorter syntax for writing functions introduced in ES6 (ECMAScript 2015).
+Key Differences Between Arrow Functions vs Regular Functions
+
+Feature	                                    Regular Function	                 Arrow Function
+Syntax	                                    Longer	                             Shorter, more concise
+this Binding	                            Dynamic (this depends on caller)	 Lexical (this comes from surrounding scope)
+arguments object	                        Available	                         ❌ Not available
+Constructor (new)	                        Can be used as a constructor	     ❌ Cannot be used with new
+Hoisting	                                ✅ Yes (function declarations)	    ❌ No (they behave like variables)
+
+
+Q7. What is the purpose of the this keyword in JavaScript?
+Ans. this refers to the object that is executing the current function. It gives you access to the object context within a function.
+const user = {
+  name: "Alice",
+  greet() {
+    console.log("Hi, I'm " + this.name);
+  }
+};
+user.greet(); // ✅ "Hi, I'm Alice"
+
+Q8. What is the event loop in JavaScript?
+Ans. The event loop is a mechanism in JavaScript that handles asynchronous operations—like setTimeout, 
+fetch, and DOM events—without blocking the main thread. JavaScript is single-threaded, meaning it runs one thing at a time. 
+The event loop helps it manage concurrent behavior efficiently.
+
+Main Components
+Call Stack – Where JS code is executed.
+Web APIs / Browser APIs – Provided by the browser (like setTimeout, DOM, etc.).
+Callback Queue / Task Queue – Stores async callbacks waiting to be executed.
+Event Loop – Continuously checks if the call stack is empty and moves queued tasks to the stack.
+
+Q9. What are promises, and how do they work?
+Ans. A Promise is an object that represents the future result of an asynchronous 
+operation—it promises to give you a value (or an error) later.
+
+States of a Promise
+A Promise has 3 states:
+Pending – The initial state, neither fulfilled nor rejected.
+Fulfilled – The operation completed successfully.
+Rejected – The operation failed.
+
+const promise = new Promise((resolve, reject) => {
+  // async operation here
+  if (success) {
+    resolve("It worked!");
+  } else {
+    reject("It failed!");
+  }
+});
+
+Using promises
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data received!");
+    }, 1000);
+  });
+};
+
+fetchData()
+  .then(result => {
+    console.log(result); // "Data received!"
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+Q10. What is async/await in JavaScript?
+Ans. async Keyword
+The async keyword is used to declare an asynchronous function.
+An async function always returns a Promise.
+Inside an async function, you can use the await keyword.​
+theodinproject.com
+
+await Keyword
+The await keyword is used to pause the execution of an async function until a Promise is resolved or rejected.
+It can only be used inside async functions or at the top level of a module.​
+
+Q11. What is the purpose of the setTimeout function?
+Ans. ​The setTimeout() function in JavaScript is used to schedule the execution of a function or code snippet after a specified delay. 
+This delay is defined in milliseconds (1 second = 1000 milliseconds). 
+It's a fundamental tool for managing asynchronous behavior in JavaScript.
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+setTimeout(greet, 2000, 'Alice');
+
+Q12. What is the difference between call, apply, and bind methods?
+Ans. Call : The Call method calls the function directly and sets this to the first argument passed to the call method and if any
+other sequences of arguments preceding the first arguments are passed to the call method then they are passed as an argument to the function.
+function greet(greeting, name) {
+  console.log(`${greeting}, ${name}! I am ${this.role}`);
+}
+const context = { role: "Admin" };
+greet.call(context, "Hello", "Alice");
+// Output: Hello, Alice! I am Admin
+
+Bind : The Bind() method creates a new function and when that new function is called it set this keyword to the first argument which is passed 
+to the bind method, and if any other sequences of arguments preceding the first argument are passed to the bind method then they are passed as
+an argument to the new function when the new function is called.
+const person = {
+    firstName : "Emily",
+    lastName : "Jones"
+}
+function greet(greeting, punctuation){
+    console.log(`${greeting}, ${this.firstName} ${this.lastName} ${punctuation}`);
+}
+
+const boundGreet = greet.bind(person, "Good morning");
+boundGreet("!")
+o/p -> Good morning, Emily Jones!
+
+Apply : The apply() method calls the function directly and sets this to the first argument passed to the apply method and if any other
+arguments provided as an array are passed to the call method then they are passed as an argument to the function.
+const person = {
+    firstName : "Emily",
+    lastName : "Jones"
+}
+function greet(greeting, punctuation){
+    console.log(`${greeting}, ${this.firstName} ${this.lastName} ${punctuation}`);
+}
+greet.apply(person, ["Hi", "?"]);
+o/p -> Hi, Jane Smith?
+
+
+                                                   React JS
+
+Q1. What is React, and what are its key features?
+Ans. React (also known as React.js or ReactJS) is an open-source JavaScript library developed by Meta (formerly Facebook) for building 
+user interfaces, particularly for single-page applications. It enables developers to create reusable UI components that manage their 
+own state, leading to efficient and dynamic user experiences.​
+Key Features of React
+Component-Based Architecture
+React promotes building UIs using encapsulated components, each managing its own state. This modular approach enhances code reusability and maintainability. 
+React
+
+Virtual DOM
+React utilizes a virtual DOM to optimize rendering. When the state of an object changes, React updates the virtual DOM first, 
+compares it with the previous version, and then updates only the parts of the real DOM that changed. 
+This process enhances performance and efficiency.
+
+JSX (JavaScript XML)
+JSX is a syntax extension for JavaScript that allows writing HTML-like code within JavaScript. It makes the code more readable and writing React components
+more intuitive. 
+
+One-Way Data Binding
+React implements unidirectional data flow, meaning data flows in a single direction, making the
+application more predictable and easier to debug. 
+
+React Hooks
+Introduced in React 16.8, Hooks allow developers to use state and other React features in functional components, 
+eliminating the need for class components. 
+
+Declarative UI
+React enables developers to design views for each state of an application, and it efficiently updates and renders the right components when data changes, 
+leading to more predictable and easier-to-debug code. 
+
+Ecosystem and Flexibility
+React's rich ecosystem includes tools like React Router for routing and Redux for state management, allowing developers 
+to build complex applications with ease.
+
+Q2. What is JSX, and why is it used in React?
+Ans. JSX enables developers to write markup that closely resembles HTML, making it easier to visualize the UI components. 
+Under the hood, JSX is transformed into JavaScript code using tools like Babel, which converts JSX into React.createElement() calls. 
+This process allows React to efficiently update and render components.
+Here are some key reasons why JSX is widely adopted in React development:
+
+Improved Readability and Maintainability
+JSX's HTML-like syntax makes the code more intuitive and easier to understand, especially for those familiar with HTML. 
+This clarity aids in maintaining and scaling applications.
+
+Combines Markup and Logic
+JSX allows embedding JavaScript expressions within the markup using curly braces {}. 
+This feature facilitates dynamic content rendering and conditional UI elements.
+
+Enhanced Developer Experience
+By integrating markup and logic, JSX reduces the need for separate template files, streamlining the development process. 
+It also provides better error messages and warnings, aiding in debugging.
+
+Performance Optimization
+During the transpilation process, JSX can be optimized for performance, resulting in faster rendering and efficient updates to the DOM.
+
+
+Q3. What are components in React?
+Ans. ​In React, components are the fundamental building blocks of a user interface. They are self-contained, 
+reusable pieces of code that define how a portion of the UI should appear and behave. 
+Each component can accept inputs, known as props, and return React elements that describe what should be rendered on the screen.
+There are two types of components : functional and class 
+
+Q4. What are props in React?
+Ans. Props are read-only inputs to a React component. They are passed as attributes in JSX and received as an object in the component function. 
+This allows components to render dynamic content based on the data they receive.
+
+Q5. What is state in React, and how is it used?
+Ans. State allows React components to manage and update internal data dynamically. Unlike props, which are passed from parent to 
+child components and remain immutable, state is managed within the component and can be changed over time.
+
+Q6. What is the virtual DOM, and how does it work in React?
+Ans. ​In React, the Virtual DOM (VDOM) is a lightweight, in-memory representation of the actual DOM. React uses it to optimize UI 
+updates by minimizing direct manipulations of the real DOM, which can be slow and resource-intensive.​
+How the Virtual DOM Works in React
+Initial Rendering: When a React component is rendered, React creates a virtual DOM tree that mirrors the structure of the real DOM.​
+State or Props Change: When a component's state or props change, React updates the virtual DOM first.​
+Diffing Algorithm: React compares the updated virtual DOM with the previous version to identify differences. This process is known as "reconciliation."​
+Minimal Updates: React calculates the minimal set of changes required and updates only those parts of the real DOM, rather than re-rendering the entire UI.
+
+Q7. What is the purpose of keys in React lists?
+Ans. In React, keys are special string attributes used when rendering lists of elements. They help React identify which items 
+have changed, been added, or removed, enabling efficient updates to the user interface.
+Purpose of Keys in React Lists are : Efficient Reconciliation, Stable Identity, Performance Optimization.
+
+Q8. What are React Hooks, and why were they introduced?
+Ans. React Hooks are like special tools that let you add features such as keeping track of data (state) and doing 
+things when your component loads or updates, all from within function components.
+
+Q9. What is the useEffect Hook, and how does it work?
+Ans. ​The useEffect Hook in React allows you to perform side effects in your functional components. Side effects are operations that can affect 
+other components and cannot be done during rendering, such as fetching data, subscribing to a service, or manually changing the DOM.​
+
+Q10. What is context in React, and how is it used?
+Ans. React Context is a feature that enables you to share values—such as state, functions, or configuration settings—across your 
+component tree without the need to pass props down manually at every level. This is particularly useful for global data like themes, 
+authentication status, or user preferences.​
+
+Q11. What is the difference between useState and useReducer Hooks?
+Ans. The useState and useReducer hooks in React are both used to manage state in functional components, but they differ in complexity 
+and use cases. Here's a breakdown of their differences:
+1. useState Hook:
+Basic Use: It is simpler and is used to manage a single piece of state or a small set of states.
+State Updates: You update the state directly with a new value.
+
+2. useReducer Hook:
+Basic Use: It is used when state logic is more complex, such as when state depends on previous state or when you have multiple state variables 
+that are tightly related.
+State Updates: Instead of setting a new state directly, you dispatch an action to update the state. This is often used when you have 
+multiple actions or need to manage state transitions more declaratively.
+
+
+-----------------------------------------------------------------Node JS----------------------------------------------------------------------
+
+Q1. What is Node.js, and what are its key features?
+Ans. Node.js is a runtime environment that allows you to run JavaScript on the server side. It is built on Chrome's V8 JavaScript engine and 
+allows developers to write server-side applications in JavaScript, which is traditionally a client-side language. Node.js is non-blocking, 
+event-driven, and designed for building scalable network applications, particularly real-time applications that require high concurrency.
+
+Key Features of Node.js: 
+Asynchronous and Non-blocking I/O, Single-Threaded Event Loop, Cross-platform
+
+Q2. What is the difference between Node.js and JavaScript?
+Ans. JavaScript and Node. js are both crucial in modern web development, but they serve different purposes and are used in different 
+environments. JavaScript is a programming language primarily used for client-side web development, while Node is a runtime environment that 
+allows JavaScript to be executed on the server side.
+
+Q3. What is npm, and how is it used?
+Ans. NPM stands for Node Package Manager and is a crucial tool for managing JavaScript packages in the Node.js ecosystem. It's a repository 
+of reusable code modules (packages) that developers can use to incorporate pre-written code into their projects, saving time and effort. 
+Think of it as a library where you can find everything from simple utilities to complex frameworks. NPM is used to install, update, and 
+remove these packages, ensuring projects stay current and compatible with the latest tools.
+
+Q4. What is the purpose of the package.json file?
+Ans. package. json holds important information about the project. It contains human-readable metadata about the project 
+(like the project name and description) as well as functional metadata like the package version number and a list of dependencies required 
+by the application.
+
+Q5. What is the event loop in Node.js?
+Ans. The event loop is what allows Node.js to perform non-blocking I/O operations — like reading files, handling network requests, or querying a database — without blocking the main thread.
+
+Instead of waiting for operations to finish, Node.js puts them in the background and keeps listening for other events 
+(like incoming HTTP requests). When the operation is done, Node.js picks up the result and executes the appropriate callback.
+
+How It Works : 
+Call Stack: The place where function calls are pushed and popped.
+Event Queue (Callback Queue): Stores callbacks waiting to be executed.
+Event Loop: Continuously checks if the call stack is empty, and if so, pushes the next callback from the event queue onto the 
+stack to be executed.
+
+Q6. What are callbacks in Node.js?
+Ans. In Node.js, a callback is a function passed as an argument to another function — and it is called after that function finishes executing.
+Callbacks are essential for handling asynchronous operations like reading files, making HTTP requests, or querying a 
+database — basically, anything that doesn’t happen instantly.
+
+Why use Callbacks-
+Node.js is non-blocking, so it doesn't wait for tasks like file reads or database queries to finish. Instead, 
+it continues running other code, and uses callbacks to handle the results once they’re ready.
+
+Q7. What is the difference between synchronous and asynchronous functions in Node.js?
+Ans. In Node.js, the key difference between synchronous and asynchronous functions lies in how they execute. Synchronous functions execute 
+sequentially, blocking other operations until they complete, while asynchronous functions execute concurrently, allowing the program to 
+continue processing other tasks while waiting for the result of a long-running operation.
+
+Synchronous Functions:
+Blocking: Synchronous functions block the program's execution flow until they finish.
+Sequential: Tasks are executed in the order they appear in the code. 
+Good for: Simple, short-duration operations where immediate results are needed. 
+
+Asynchronous Functions:
+Non-blocking: Asynchronous functions do not block the program's execution flow.
+Concurrent: Tasks can run concurrently, allowing other parts of the program to continue executing while waiting for the result of 
+a long-running operation. 
+Good for: I/O operations (e.g., reading from a file, making network requests), where the program should not wait for the operation to complete.
+
+Q8. What is the purpose of the require function in Node.js?
+Ans. The require() function in Node.js is used to import and load modules (JavaScript files or built-in modules) into a Node.js application. 
+It's a core part of the CommonJS module system used for managing dependencies and structuring code.
+
+Q9. What is the purpose of the buffer class in Node.js?
+Ans. The Buffer class in Node.js is used to handle binary data (raw bytes) directly in memory — especially useful when dealing with streams(flow of data), 
+files, networking, or binary protocols.
+
+Q10. What is Express.js, and how does it relate to Node.js?
+Ans. Express.js is a minimal and flexible web application framework for Node.js that makes building web servers and APIs easier and faster.
+Think of Express as a set of tools on top of Node.js that simplifies:
+Creating routes (like /home, /login)
+Handling HTTP requests and responses
+Managing middleware (like logging, authentication, etc.)
+
+Q11. What is middleware in Express.js?
+Ans. The middleware in node. js is a function that will have all the access for requesting an object, responding to an object, 
+and moving to the next middleware function in the application request-response cycle.
+
