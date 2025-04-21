@@ -99,8 +99,8 @@ const PaginationAndSearch = () => {
               marginLeft: "300px",
               outline: "none",
               border: "2px solid gray",
-              borderRadius:'8px',
-              padding:'5px'
+              borderRadius: "8px",
+              padding: "5px",
             }}
           />
         </div>
@@ -188,35 +188,35 @@ const PaginationAndSearch = () => {
 
         {filteredData.length === 0 ? (
           <div>Data not found</div>
-        ):(
+        ) : (
           <>
-          {filteredData.length > itemsPerPage && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "10px",
-              marginTop: "12px",
-            }}
-          >
-            {[...Array(totalPages)].map((_, index) => (
-              <button
-                key={index}
-                onClick={() => paginate(index + 1)}
+            {filteredData.length > itemsPerPage && (
+              <div
                 style={{
-                  padding: "6px 12px",
-                  border: "2px solid gray",
-                  borderRadius: "5px",
-                  backgroundColor:
-                    currentPage === index + 1 ? "#a0a0a0" : "#e0e0e0",
-                  cursor: "pointer",
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "10px",
+                  marginTop: "12px",
                 }}
               >
-                {index + 1}
-              </button>
-            ))}
-          </div>
-        )}
+                {[...Array(totalPages)].map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => paginate(index + 1)}
+                    style={{
+                      padding: "6px 12px",
+                      border: "2px solid gray",
+                      borderRadius: "5px",
+                      backgroundColor:
+                        currentPage === index + 1 ? "#a0a0a0" : "#e0e0e0",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
+            )}
           </>
         )}
       </div>

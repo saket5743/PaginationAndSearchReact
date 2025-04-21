@@ -55,8 +55,8 @@ function outer() {
 
 Scope Type	            Declared With	           Accessible From
 Global	                var, let, const	           Anywhere
-Function	            var, let, const	           Inside the same function
-Block	                let, const	               Inside the same {} block
+Function	              var, let, const	           Inside the same function
+Block	                  let, const	               Inside the same {} block
 Lexical	                (based on code location)   Inner functions can access outer scopes
 
 
@@ -190,10 +190,21 @@ greet.apply(person, ["Hi", "?"]);
 o/p -> Hi, Jane Smith?
 
 
+Q13.  What is Object-Oriented Programming (OOP) in JavaScript?
+Ans. OOP is a programming paradigm that uses objects to model real-world entities. In JavaScript, OOP is implemented using prototypes 
+and ES6 classes, allowing for code reusability and modularity.
+
+Q14. What are the four pillars of OOP?
+Ans. Encapsulation: Bundling data and methods that operate on that data within one unit, restricting direct access to some components.
+     Abstraction: Hiding complex implementation details and showing only the essential features.​
+     Inheritance: Mechanism where one class can inherit properties and methods from another.​
+     Polymorphism: Ability of different objects to respond to the same method call in different ways.
+
+
                                                    React JS
 
 Q1. What is React, and what are its key features?
-Ans. React (also known as React.js or ReactJS) is an open-source JavaScript library developed by Meta (formerly Facebook) for building 
+Ans. ReactJS is an open-source JavaScript library developed by Meta (formerly Facebook) for building 
 user interfaces, particularly for single-page applications. It enables developers to create reusable UI components that manage their 
 own state, leading to efficient and dynamic user experiences.​
 Key Features of React
