@@ -186,7 +186,11 @@ const PaginationAndSearch = () => {
           ))}
         </div>
 
-        {filteredData.length > itemsPerPage && (
+        {filteredData.length === 0 ? (
+          <div>Data not found</div>
+        ):(
+          <>
+          {filteredData.length > itemsPerPage && (
           <div
             style={{
               display: "flex",
@@ -212,6 +216,8 @@ const PaginationAndSearch = () => {
               </button>
             ))}
           </div>
+        )}
+          </>
         )}
       </div>
     </div>
