@@ -1,9 +1,12 @@
-import PaginationAndSearch from "./components/PaginationAndSearch";
+// import PaginationAndSearch from "./components/PaginationAndSearch";
+import MakePageResponsive from "./components/MakePageResponsive";
+
 
 function App() {
   return (
     <div>
-      <PaginationAndSearch />
+      {/* <PaginationAndSearch /> */}
+      <MakePageResponsive />
     </div>
   );
 }
