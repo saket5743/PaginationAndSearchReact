@@ -1,7 +1,9 @@
 // import PaginationAndSearch from "./components/PaginationAndSearch";
 // import MakePageResponsive from "./components/MakePageResponsive";
-import Bank from "./components/Bank";
+// import Bank from "./components/Bank";
 // import FetchApi from "./components/FetchApi";
+
+import ClickAndDoubleClick from "./components/ClickAndDoubleClick";
 
 
 function App() {
@@ -9,8 +11,9 @@ function App() {
     <div>
       {/* <PaginationAndSearch /> */}
       {/* <MakePageResponsive /> */}
-      <Bank />
+      {/* <Bank /> */}
       {/* <FetchApi /> */}
+      <ClickAndDoubleClick />
     </div>
   );
 }
