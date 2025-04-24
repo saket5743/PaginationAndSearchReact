@@ -32,7 +32,7 @@ const Bank = () => {
     }
   };
 
-  const formattedBalance = useMemo(() => {
+  const formatedBalance = useMemo(() => {
     return `₹${currentBalance.toFixed(2)}`;
   }, [currentBalance]);
 
@@ -41,7 +41,7 @@ const Bank = () => {
       <div>
         <div>
           <h1>My Bank Wallet</h1>
-          <h3>Current Balance: {formattedBalance}</h3>
+          <h3>Current Balance: {formatedBalance}</h3>
           {errorMessage && <p>{errorMessage}</p>}
         </div>
         <div>
