@@ -4,19 +4,30 @@ const FetchApi = () => {
     const [data, setData] = useState([]);
 
     useEffect(()=>{
-        const fetchApi = async()=>{
-            try {
-                let response = await fetch('https://fakestoreapi.in/api/products/category?type=mobile');
-                if(!response.ok){
-                    throw new Error("The error is reflecting.");
-                }
-                response = await response.json();
-                setData(response.products);
-            } catch (error) {
-                console.error("There is error", error);
+      const storedData = localStorage.getItem('mobileproducts');
+      if (storedData) {
+        setData(JSON.parse(storedData));
+      } else {
+        const fetchApi = async () => {
+          try {
+            let response = await fetch(
+              "https://fakestoreapi.in/api/products/category?type=mobile"
+            );
+            if (!response.ok) {
+              throw new Error("The error is reflecting.");
             }
-        }
-        fetchApi()
+            response = await response.json();
+            setData(response.products);
+            localStorage.setItem(
+              "mobileproducts",
+              JSON.stringify(response.products)
+            );
+          } catch (error) {
+            console.error("There is error", error);
+          }
+        };
+        fetchApi();
+      }
     })
   
   return (
