@@ -2,8 +2,9 @@
 // import MakePageResponsive from "./components/MakePageResponsive";
 // import Bank from "./components/Bank";
 // import FetchApi from "./components/FetchApi";
+// import ClickAndDoubleClick from "./components/ClickAndDoubleClick";
 
-import ClickAndDoubleClick from "./components/ClickAndDoubleClick";
+import EditForm from "./components/EditForm";
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       {/* <MakePageResponsive /> */}
       {/* <Bank /> */}
       {/* <FetchApi /> */}
-      <ClickAndDoubleClick />
+      {/* <ClickAndDoubleClick /> */}
+      <EditForm />
     </div>
   );
 }

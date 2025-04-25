@@ -12,7 +12,7 @@ const ClickAndDoubleClick = () => {
   return (
     <div>
         <div style={{textAlign:'center', height:"100vh", width:"100vw", display:'flex', justifyContent:"center", alignItems:"center"}}>
-            <button onClick={handleClick} onDoubleClick={doubleClick} style={{backgroundColor:'green', padding:'10px', borderRadius:'5px', color:'white'}}>Click Me</button>
+            <button onClick={handleClick} onDoubleClick={doubleClick} style={{backgroundColor:'green', padding:'12px', borderRadius:'5px', color:'white', fontWeight:'bold'}}>Click Me</button>
         </div>
     </div>
   )
