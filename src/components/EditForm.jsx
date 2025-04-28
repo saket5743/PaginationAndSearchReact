@@ -70,53 +70,21 @@ const handleSubmit = () => {
 };
 
   return (
-    <div
-      style={{
-        padding: "40px 31px 40px 31px",
-        backgroundColor: "orange",
-        height: "600px",
-        width: "700px",
-      }}
+    <div className='pt-[40px] pr-[31px] pb-[40px] pl-[31px] bg-[#FBC02D] h-[600px] w-[700px] maindiv'
     >
       <div>
-        <p
-          style={{
-            fontFamily: "Inter",
-            fontWeight: 600,
-            fontSize: "28px",
-            lineHeight: "100%",
-            letterSpacing: "0%",
-            textAlign: "center",
-            verticalAlign: "middle",
-          }}
+        <p className='font-inter font-semibold text-[28px] leading-[1] tracking-normal text-center align-middle quotenow'
         >
           Give a Quote Now
         </p>
         <p
-          style={{
-            fontFamily: "Inter",
-            fontWeight: 400,
-            fontSize: "18px",
-            lineHeight: "126%",
-            letterSpacing: "0%",
-            textAlign: "center",
-            verticalAlign: "middle",
-            color: "#172640",
-            marginTop: "5px",
-          }}
+          className='font-inter font-normal text-[18px] leading-[1.26] tracking-normal text-center align-middle text-[#172640] mt-[5px] quoteimmediately'
         >
           Get a Quote Immeadiately Upon Form Submission
         </p>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "16px",
-          width: "616px",
-          height: "52px",
-          padding: "20px",
-        }}
+      <div className='flex gap-[16px] w-[616px] h-[52px] p-[20px] inputdivfirst'
       >
         <input
           type="text"
@@ -125,15 +93,7 @@ const handleSubmit = () => {
           value={inputData.firstName}
           onChange={handleData}
           disabled={!isEditable}
-          style={{
-            width: 300,
-            height: 46,
-            padding: "10px",
-            borderRadius: "6px",
-            borderWidth: "1px",
-            border: "1px solid gray",
-            outline: "none",
-          }}
+          className='w-[300px] h-[46px] p-[10px] rounded-[6px] border bg-white border-gray-500 outline-none firstnamecss'
         />
         <input
           type="text"
@@ -142,27 +102,11 @@ const handleSubmit = () => {
           value={inputData.lastName}
           onChange={handleData}
           disabled={!isEditable}
-          style={{
-            width: 300,
-            height: 46,
-            padding: "10px",
-            borderRadius: "6px",
-            borderWidth: "1px",
-            border: "1px solid gray",
-            outline: "none",
-          }}
+          className='w-[300px] h-[46px] p-[10px] rounded-[6px] border bg-white border-gray-500 outline-none lastnamecss'
         />
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "16px",
-          width: "616px",
-          height: "52px",
-          padding: "20px",
-          marginTop: "15px",
-        }}
+      <div className='flex gap-[16px] w-[616px] h-[52px] p-[20px] mt-[15px] inputdivsecond'
       >
         <input
           type="email"
@@ -171,15 +115,7 @@ const handleSubmit = () => {
           value={inputData.email}
           onChange={handleData}
           disabled={!isEditable}
-          style={{
-            width: 300,
-            height: 46,
-            padding: "10px",
-            borderRadius: "6px",
-            borderWidth: "1px",
-            border: "1px solid gray",
-            outline: "none",
-          }}
+          className='w-[300px] h-[46px] p-[10px] rounded-[6px] border bg-white border-gray-500 outline-none emailcss'
         />
         <input
           type="tel"
@@ -188,30 +124,11 @@ const handleSubmit = () => {
           value={inputData.phone}
           onChange={handleData}
           disabled={!isEditable}
-          style={{
-            width: 300,
-            height: 46,
-            padding: "10px",
-            borderRadius: "6px",
-            borderWidth: "1px",
-            border: "1px solid gray",
-            outline: "none",
-          }}
+          className='w-[300px] h-[46px] p-[10px] rounded-[6px] border bg-white border-gray-500 outline-none phonecss'
         />
       </div>
 
-      <div
-        style={{
-          gap: "16px",
-          width: "576px",
-          height: "132px",
-          padding: "20px",
-          marginLeft: "20px",
-          marginTop: "35px",
-          backgroundColor: "white",
-          borderRadius: "6px",
-          border: "1px solid gray",
-        }}
+      <div className='gap-[16px] w-[576px] h-[132px] p-[20px] ml-[20px] mt-[35px] bg-white rounded-[6px] border border-gray-500 inputdivthird'
       >
         <label>Order Details</label> <br />
         <input
@@ -221,17 +138,7 @@ const handleSubmit = () => {
           onChange={handleData}
           disabled={!isEditable}
           placeholder="Submit Your Order Information - Item Name, Decoration Size, Quantity, Due Date and any other details"
-          style={{
-            width: 540,
-            height: 46,
-            fontSize: "12px",
-            padding: "10px",
-            borderRadius: "6px",
-            borderWidth: "1px",
-            border: "none",
-            marginLeft: "-7px",
-            outline: "none",
-          }}
+          className='w-[540px] h-[46px] text-[12px] p-[10px] rounded-[6px] border-none -ml-[7px] outline-none inputordercss'
         />
       </div>
 
@@ -294,28 +201,10 @@ const handleSubmit = () => {
         )}
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          gap: "36px",
-          width: "616px",
-          height: "52px",
-          padding: "20px",
-          marginTop: "15px",
-        }}
+      <div className='flex justify-end gap-[36px] w-[616px] h-[52px] p-[20px] mt-[15px] buttondiv'
       >
         <div>
-          <button
-            style={{
-              backgroundColor: "red",
-              padding: "10px 15px 10px 15px",
-              width: "280px",
-              height: "52px",
-              borderRadius: "25px",
-              color: "white",
-              fontWeight: "bold",
-            }}
+          <button className='bg-red-500 px-[15px] py-[10px] w-[280px] h-[52px] rounded-[25px] text-white font-bold buttoncancel'
             onClick={handleCancel}
           >
             Cancel
@@ -323,31 +212,13 @@ const handleSubmit = () => {
         </div>
         <div>
           {isEditable && isFormComplete ? (
-            <button
-              style={{
-                backgroundColor: "#3578EA",
-                padding: "10px 15px 10px 15px",
-                width: "280px",
-                height: "52px",
-                borderRadius: "25px",
-                color: "white",
-                fontWeight: "bold",
-              }}
+            <button className='bg-[#3578EA] px-[15px] py-[10px] w-[280px] h-[52px] rounded-[25px] text-white font-bold buttonsendrequest'
               onClick={handleSubmit}
             >
               Send Request
             </button>
           ) : (
-            <button
-              style={{
-                backgroundColor: "#3578EA",
-                padding: "10px 15px 10px 15px",
-                width: "280px",
-                height: "52px",
-                borderRadius: "25px",
-                color: "white",
-                fontWeight: "bold",
-              }}
+            <button className='bg-[#3578EA] px-[15px] py-[10px] w-[280px] h-[52px] rounded-[25px] text-white font-bold buttonedit'
               onClick={handleEdit}
             >
               Edit
