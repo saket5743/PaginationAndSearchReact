@@ -46,17 +46,12 @@ const EditForm = () => {
 
 const handleSubmit = () => {
   const formData = new FormData();
-  Object.entries(inputData).forEach(([key, value]) =>
-    formData.append(key, value)
-  );
-  formData.append("file", file);
-  [...formData.entries()].forEach(([key, value]) =>
-    console.log(`${key}: ${value}`)
-  );
-  setIsEditable(false);
-  alert(
-    `${inputData.firstName} ${inputData.lastName} your form is submitted successfully.`
-  );
+  Object.entries(inputData).forEach(([key, value]) => formData.append(key, value));
+  if (file) formData.append("file", file);
+  for (let [key, value] of formData) {
+    console.log(`${key}: ${value}`);
+  }
+  alert(`${inputData.firstName} ${inputData.lastName}, your form is submitted successfully.`);
   setInputData({
     firstName: "",
     lastName: "",
@@ -65,9 +60,10 @@ const handleSubmit = () => {
     order: "",
     uploadf: "",
   });
-  setIsEditable(false);
   setFile(null);
+  setIsEditable(false);
 };
+
 
   return (
     <div className='pt-[40px] pr-[31px] pb-[40px] pl-[31px] bg-[#FBC02D] h-[600px] w-[700px] maindiv'
